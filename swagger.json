@@ -1,0 +1,617 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Online books retail firm",
+    "version": "1.0.0",
+    "title": "Reading Is Good API",
+    "contact": {
+      "name": "Tunç Baskak",
+      "uri": "www.xxx.com",
+      "email": "tncbsk@hotmail.com"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "authentication-controller",
+      "description": "Authentication Controller"
+    },
+    {
+      "name": "book-controller",
+      "description": "Book Controller"
+    },
+    {
+      "name": "customer-controller",
+      "description": "Customer Controller"
+    },
+    {
+      "name": "order-controller",
+      "description": "Order Controller"
+    },
+    {
+      "name": "statistics-controller",
+      "description": "Statistics Controller"
+    }
+  ],
+  "paths": {
+    "/api/book/add-book": {
+      "post": {
+        "tags": [
+          "book-controller"
+        ],
+        "summary": "Add Book Method",
+        "operationId": "addBookUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bookInput",
+            "description": "bookInput",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Input for create new book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/book/update-book-stock": {
+      "post": {
+        "tags": [
+          "book-controller"
+        ],
+        "summary": "Update Book Method",
+        "operationId": "updateBookStockUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "bookUpdateInput",
+            "description": "bookUpdateInput",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Input for update book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/customer-order-list": {
+      "get": {
+        "tags": [
+          "customer-controller"
+        ],
+        "summary": "List Customer Orders Method",
+        "operationId": "customerOrderListUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderOutput"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/customer/register": {
+      "post": {
+        "tags": [
+          "customer-controller"
+        ],
+        "summary": "Register New Customer Method",
+        "operationId": "createUserUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "customerInput",
+            "description": "customerInput",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Input for customer register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/order/create-order": {
+      "post": {
+        "tags": [
+          "order-controller"
+        ],
+        "summary": "Create Order Method",
+        "operationId": "createOrderUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "orderAddInput",
+            "description": "orderAddInput",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Input for create new order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/order/list-order-by-date": {
+      "get": {
+        "tags": [
+          "order-controller"
+        ],
+        "summary": "Get Orders Between Dates",
+        "operationId": "getOrderByKeyUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "endDate",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "startDate",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OrderOutput"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/order/{id}": {
+      "get": {
+        "tags": [
+          "order-controller"
+        ],
+        "summary": "Get Order By Id",
+        "operationId": "getOrderByKeyUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OrderOutput"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/api/statistics/{customerId}": {
+      "get": {
+        "tags": [
+          "statistics-controller"
+        ],
+        "summary": "Get Statistics Method",
+        "operationId": "getStatisticsUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/authenticate/create-token": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "summary": "Create Token Method",
+        "description": "Create token only register customer",
+        "operationId": "createTokenUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "authenticationInput",
+            "description": "authenticationInput",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Authentication Input"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "Authentication Input": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email for Authentication"
+        },
+        "password": {
+          "type": "string",
+          "description": "Email for Authentication"
+        }
+      },
+      "title": "Authentication Input"
+    },
+    "Book": {
+      "type": "object",
+      "properties": {
+        "bookName": {
+          "type": "string"
+        },
+        "existYear": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "isbn": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "writer": {
+          "type": "string"
+        }
+      },
+      "title": "Book"
+    },
+    "Input for create new book": {
+      "type": "object",
+      "properties": {
+        "bookName": {
+          "type": "string",
+          "description": "book name for create new book"
+        },
+        "existYear": {
+          "type": "string",
+          "description": "existYear for create new book"
+        },
+        "isbn": {
+          "type": "string",
+          "description": "isbn for create new book"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "price for create new book"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int64",
+          "description": "stock for create new book"
+        },
+        "writer": {
+          "type": "string",
+          "description": "writer for create new book"
+        }
+      },
+      "title": "Input for create new book"
+    },
+    "Input for create new order": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "description": "book detail for create new order",
+          "items": {
+            "$ref": "#/definitions/Input for create new order's book detail"
+          }
+        }
+      },
+      "title": "Input for create new order"
+    },
+    "Input for create new order's book detail": {
+      "type": "object",
+      "properties": {
+        "bookId": {
+          "type": "string",
+          "description": "bookId for create new order's book detail"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "quantity create new order's book detail"
+        }
+      },
+      "title": "Input for create new order's book detail"
+    },
+    "Input for customer register": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "email for customer register"
+        },
+        "name": {
+          "type": "string",
+          "description": "name for customer register"
+        },
+        "password": {
+          "type": "string",
+          "description": "password for customer register"
+        },
+        "surname": {
+          "type": "string",
+          "description": "surname for customer register"
+        }
+      },
+      "title": "Input for customer register"
+    },
+    "Input for update book": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string",
+          "description": "isbn for update book"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "price for update book"
+        },
+        "stock": {
+          "type": "integer",
+          "format": "int64",
+          "description": "stock for update book"
+        }
+      },
+      "title": "Input for update book"
+    },
+    "Model for order book list": {
+      "type": "object",
+      "properties": {
+        "book": {
+          "description": "Book list model book object",
+          "$ref": "#/definitions/Book"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "description": "price for book model"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "quantity for book model"
+        }
+      },
+      "title": "Model for order book list"
+    },
+    "OrderOutput": {
+      "type": "object",
+      "properties": {
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Model for order book list"
+          }
+        },
+        "customerInput": {
+          "$ref": "#/definitions/Input for customer register"
+        },
+        "orderDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PENDING",
+            "CONFIRMED",
+            "CANCELED"
+          ]
+        }
+      },
+      "title": "OrderOutput"
+    }
+  }
+}

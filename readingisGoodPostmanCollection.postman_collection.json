@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "cfa9deab-84e2-42db-a41e-75d1069a03f1",
+		"name": "readingisGoodPostmanCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/customer/register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Merve\",\r\n    \"surname\": \"Baskak\",\r\n    \"email\": \"mrvshn@xxx.com\",\r\n    \"password\": \"deneme123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"register"
+					]
+				},
+				"description": "Customer register"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/authenticate/create-token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"mrvshn@xxx.com\",\r\n    \"password\": \"Deneme123\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate/create-token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate",
+						"create-token"
+					]
+				},
+				"description": "Create Token For Valid Customer"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/book/add-book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcnZzaG5AeHh4LmNvbSIsImV4cCI6MTY1Mjc4NTM4MSwiaWF0IjoxNjUyNzgxNzgxfQ.ZnZNljYbtsYqBdzJr_aTnKDk7vbwjCmKW4KOAmJdBteGsRjGDcz6FXYZcowu-fjN6iJ3UWOVjhNlbEl5TL9rNA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isbn\": \"1234\",\r\n    \"bookName\" :\"Sapiens\",\r\n    \"writer\": \"Dan Brown\",\r\n    \"existYear\": \"2021\",\r\n    \"stock\": 100,\r\n    \"price\":\"200.10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/book/add-book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"book",
+						"add-book"
+					]
+				},
+				"description": "Add new book "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/order/create-order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcnZzaG5AeHh4LmNvbSIsImV4cCI6MTY1Mjc4NTM4MSwiaWF0IjoxNjUyNzgxNzgxfQ.ZnZNljYbtsYqBdzJr_aTnKDk7vbwjCmKW4KOAmJdBteGsRjGDcz6FXYZcowu-fjN6iJ3UWOVjhNlbEl5TL9rNA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"books\": [\r\n        {\r\n            \"bookId\": \"62837ce65eabe229c88d8d40\",\r\n            \"quantity\": 9\r\n        }\r\n        \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order/create-order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"create-order"
+					]
+				},
+				"description": "Create new Order"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/order/62837cfe5eabe229c88d8d41",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcnZzaG5AeHh4LmNvbSIsImV4cCI6MTY1Mjc4NTM4MSwiaWF0IjoxNjUyNzgxNzgxfQ.ZnZNljYbtsYqBdzJr_aTnKDk7vbwjCmKW4KOAmJdBteGsRjGDcz6FXYZcowu-fjN6iJ3UWOVjhNlbEl5TL9rNA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/order/62837cfe5eabe229c88d8d41",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"62837cfe5eabe229c88d8d41"
+					]
+				},
+				"description": "Search Order by id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/order/list-order-by-date/?startDate=2022-05-16&endDate=2022-05-18",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcnZzaG5AeHh4LmNvbSIsImV4cCI6MTY1Mjc4NTM4MSwiaWF0IjoxNjUyNzgxNzgxfQ.ZnZNljYbtsYqBdzJr_aTnKDk7vbwjCmKW4KOAmJdBteGsRjGDcz6FXYZcowu-fjN6iJ3UWOVjhNlbEl5TL9rNA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/order/list-order-by-date/?startDate=2022-05-16&endDate=2022-05-18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"list-order-by-date",
+						""
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2022-05-16"
+						},
+						{
+							"key": "endDate",
+							"value": "2022-05-18"
+						}
+					]
+				},
+				"description": "List order between dates"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/customer/customer-order-list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcnZzaG5AeHh4LmNvbSIsImV4cCI6MTY1Mjc4NTM4MSwiaWF0IjoxNjUyNzgxNzgxfQ.ZnZNljYbtsYqBdzJr_aTnKDk7vbwjCmKW4KOAmJdBteGsRjGDcz6FXYZcowu-fjN6iJ3UWOVjhNlbEl5TL9rNA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/customer/customer-order-list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"customer-order-list"
+					]
+				},
+				"description": "Customer order list by customer "
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/book/update-book-stock",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtcnZzaG5AeHh4LmNvbSIsImV4cCI6MTY1Mjc4NTM4MSwiaWF0IjoxNjUyNzgxNzgxfQ.ZnZNljYbtsYqBdzJr_aTnKDk7vbwjCmKW4KOAmJdBteGsRjGDcz6FXYZcowu-fjN6iJ3UWOVjhNlbEl5TL9rNA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isbn\":\"1234\",\r\n    \"price\": 220,\r\n    \"stock\":120\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/book/update-book-stock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"book",
+						"update-book-stock"
+					]
+				},
+				"description": "update book stock or price "
+			},
+			"response": []
+		}
+	]
+}
